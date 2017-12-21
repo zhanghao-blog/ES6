@@ -18,7 +18,7 @@
     </li>
 
     <li>
-        <span>4</span>
+        <span>3</span>
         <button class='up'>UP</button>
         <button class='down'>DOWN</button>
     </li>
@@ -34,7 +34,6 @@
         [...btns].forEach(d => {
             d.onclick = e => {
                 let text = e.target.innerText;
-
                 [...lis].forEach((d, i) => {
                     if (d.isEqualNode(e.target.parentNode)) {
                         if (text == 'UP') {
