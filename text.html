@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id='adjustable-list'>
+    <li>
+        <span>1</span>
+        <button class='up'>UP</button>
+        <button class='down'>DOWN</button>
+    </li>
+    <li>
+        <span>2</span>
+        <button class='up'>UP</button>
+        <button class='down'>DOWN</button>
+    </li>
+
+    <li>
+        <span>4</span>
+        <button class='up'>UP</button>
+        <button class='down'>DOWN</button>
+    </li>
+</ul>
+</body>
+<script type="text/javascript">
+    const initAdjustableList = () => {
+        var ul = document.getElementById('adjustable-list'),
+            btns = ul.getElementsByTagName('button'),
+            lis = ul.getElementsByTagName('li'),
+            len = lis.length;
+
+        [...btns].forEach(d => {
+            d.onclick = e => {
+                let text = e.target.innerText;
+
+                [...lis].forEach((d, i) => {
+                    if (d.isEqualNode(e.target.parentNode)) {
+                        if (text == 'UP') {
+                            ul.insertBefore(d, lis[i-1])
+                        } else {
+                            ul.insertBefore(d, lis[i+2 > len ? 0 : i + 2])
+                        }
+                    }
+                })
+            }
+        })
+    }
+    initAdjustableList();
+</script>
+</html>
